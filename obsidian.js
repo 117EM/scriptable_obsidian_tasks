@@ -1,8 +1,11 @@
+// Variables used by Scriptable.
+// These must be at the very top of the file. Do not edit.
+// icon-color: deep-blue; icon-glyph: magic;
 const fileManager = FileManager.local()
-const VAULT_NAME = 'NAME_OF_YOUR_VAULT'
+const VAULT_NAME = 'PARA'
 
 const bookmark = fileManager.allFileBookmarks()
-  .find(({name}) => name === "obsidian")
+  .find(({name}) => name === "PARA")
 if (bookmark == null) {
   console.log('Failed to find Bookmark')
   return
@@ -86,7 +89,7 @@ function readAllTasks(path) {
     if (fileManager.isDirectory(path)) {
       tasks = tasks.concat(readAllTasks(path))
     } else if(fileManager.fileExtension(path) === 'md') {
-      const contents = fileManager.readString(path)
+      const contents = fileManager.readString(path)  
       const tasksInFile = getTasks(contents, path)
       tasks = tasks.concat(tasksInFile)
     }
@@ -97,11 +100,7 @@ function readAllTasks(path) {
 const allTasks = readAllTasks(npPath)
 
 const today = new Date()
-const todayStr = [
-  today.getFullYear(),
-  today.getMonth() + 1,
-  today.getDate()
-].join('-')
+const todayStr = today.toISOString().slice(0, 10)
 
 const PRIORITY = {
   '\uD83D\uDD3A': 0, // 🔺
