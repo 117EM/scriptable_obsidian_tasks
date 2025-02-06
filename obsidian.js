@@ -2,10 +2,10 @@
 // These must be at the very top of the file. Do not edit.
 // icon-color: deep-blue; icon-glyph: magic;
 const fileManager = FileManager.local()
-const VAULT_NAME = 'PARA'
+const VAULT_NAME = 'NAME_OF_YOUR_VAULT'
 
 const bookmark = fileManager.allFileBookmarks()
-  .find(({name}) => name === "PARA")
+  .find(({name}) => name === "obsidian")
 if (bookmark == null) {
   console.log('Failed to find Bookmark')
   return
